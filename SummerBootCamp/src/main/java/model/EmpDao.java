@@ -6,17 +6,18 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
-public class ItemDao {
+public class EmpDao {
 
-    public ArrayList<Emp> findAll() {
+    public List<Emp> findAll() throws SQLException {
 
         String sql =
                 "SELECT EMPNO, ENAME, JOB "
                         + "FROM EMP "
                         + "ORDER BY EMPNO";
 
-        ArrayList<Emp> empList = new ArrayList<>();
+        List<Emp> empList = new ArrayList<>();
 
         try (Connection connection = DriverManager.getConnection(
                 DbConfig.URL,
@@ -33,11 +34,6 @@ public class ItemDao {
 
                 empList.add(emp);
             }
-
-
-        } catch (SQLException e) {
-            System.out.println("SELECT 実行時にエラーが発生しました");
-            System.out.println(e.getMessage());
         }
 
         return empList;
