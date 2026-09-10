@@ -23,17 +23,13 @@ public class EmpDao {
                 DbConfig.URL,
                 DbConfig.USER,
                 DbConfig.PASSWORD);
-             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-             ResultSet resultSet = preparedStatement.executeQuery()) {
+            ) {
+            Emp emp = new Emp();
+            emp.setEmpNo(0);
+            emp.setEName("test");
+            emp.setJob("connected");
 
-            while (resultSet.next()) {
-                Emp emp = new Emp();
-                emp.setEmpNo(resultSet.getInt("EMPNO"));
-                emp.setEName(resultSet.getString("ENAME"));
-                emp.setJob(resultSet.getString("JOB"));
-
-                empList.add(emp);
-            }
+            empList.add(emp);
         }
 
         return empList;
